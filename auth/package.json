@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --no-cache",
-    "test:cli": "jest",
+    "test:ci": "jest",
     "start": "ts-node-dev src/index.ts"
   },
   "jest": {

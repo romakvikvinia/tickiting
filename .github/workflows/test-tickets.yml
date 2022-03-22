@@ -1,9 +1,10 @@
-
 name: TESTS-TICKETS
 
-on: 
-  pull_request 
-  
+on:
+  pull_request:
+    paths:
+      - "tickets/**"
+
 jobs:
   buld:
     runs-on: ubuntu-latest

@@ -1,8 +1,10 @@
 name: TESTS-AUTH
 
-on: 
-  pull_request 
-  
+on:
+  pull_request:
+    paths:
+      - "auth/**"
+
 jobs:
   buld:
     runs-on: ubuntu-latest

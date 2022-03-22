@@ -1,0 +1,73 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+metadata:
+  name: tikiting
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: romakvikvinia/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+        # noCache: true
+        # squash: false
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: romakvikvinia/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+        # noCache: true
+        # squash: false
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: romakvikvinia/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+        # noCache: true
+        # squash: false
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: romakvikvinia/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+        # noCache: true
+        # squash: false
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: romakvikvinia/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+        # noCache: true
+        # squash: false
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+
+    - image: romakvikvinia/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+        # noCache: true
+        # squash: false
+      sync:
+        manual:
+          - src: "**/*.{js|jsx}"
+            dest: .
